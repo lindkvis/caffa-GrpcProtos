@@ -10,6 +10,8 @@ service ObjectAccess
 {
     rpc GetDocument( DocumentRequest ) returns( Object ) {}
     rpc ExecuteMethod( MethodRequest ) returns( Object ) {}
+    rpc GetDescendants (DescendantsRequest) returns(ObjectList) {}
+    rpc GetAncestors(AncestorsRequest) returns(ObjectList) {}
 }
 
 message Object
