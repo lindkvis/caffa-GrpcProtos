@@ -16,8 +16,7 @@ service ObjectAccess
 
 message Object
 {
-    string class_keyword = 1;
-    string json          = 3;
+    string json          = 1;
 }
 
 message ObjectList
