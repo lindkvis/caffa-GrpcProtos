@@ -6,12 +6,17 @@ option java_multiple_files = true;
 option java_package = "org.caffa.rpc";
 option optimize_for = SPEED;
 
+import "AppInfo.proto";
 import "ObjectService.proto";
 
 service FieldAccess
 {
-    rpc SetValue( stream SetterChunk ) returns( SetterReply ) {}
-    rpc GetValue( FieldRequest ) returns( stream GetterReply ) {}
+    rpc SetArrayValue( stream SetterChunk ) returns( SetterArrayReply ) {}
+    rpc GetArrayValue( FieldRequest ) returns( stream GetterArrayReply ) {}
+
+    rpc SetValue( SetterRequest ) returns( NullMessage ) {}
+    rpc GetValue( FieldRequest ) returns( GetterReply ) {}
+
 }
 
 message IntArray
@@ -51,43 +56,53 @@ message FieldRequest
     Object params = 3;
 }
 
-message SetterRequest
+message SetterArrayRequest
 {
-    FieldRequest request     = 1;
+    FieldRequest field       = 1;
     int32        value_count = 2;
 }
+
+message SetterRequest
+{
+    FieldRequest field = 1;
+    string       value = 2;
+}
+
 
 message SetterChunk
 {
     oneof data
     {
-        SetterRequest set_request  = 1;
-        string        scalar       = 2;
-        IntArray      ints         = 3;
-        DoubleArray   doubles      = 4;
-        StringArray   strings      = 5;
-        FloatArray    floats       = 6;
-        Int64Array    int64s       = 7;
-        UInt64Array   uint64s      = 8;
+        SetterArrayRequest set_request  = 1;
+        IntArray           ints         = 2;
+        DoubleArray        doubles      = 3;
+        StringArray        strings      = 4;
+        FloatArray         floats       = 5;
+        Int64Array         int64s       = 6;
+        UInt64Array        uint64s      = 7;
+    }
+}
+
+message GetterArrayReply
+{
+    oneof data
+    {
+        IntArray    ints    = 1;
+        DoubleArray doubles = 2;
+        StringArray strings = 3;
+        FloatArray  floats  = 4;
+        Int64Array  int64s  = 5;
+        UInt64Array uint64s = 6;
+
     }
 }
 
 message GetterReply
 {
-    oneof data
-    {
-        string      scalar = 1;
-        IntArray    ints    = 2;
-        DoubleArray doubles = 3;
-        StringArray strings = 4;
-        FloatArray  floats  = 5;
-        Int64Array  int64s  = 6;
-        UInt64Array uint64s = 7;
-
-    }
+    string value = 1;
 }
 
-message SetterReply
+message SetterArrayReply
 {
     int64 value_count = 1;
 }
