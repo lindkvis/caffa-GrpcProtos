@@ -11,8 +11,8 @@ import "ObjectService.proto";
 
 service FieldAccess
 {
-    rpc SetArrayValue( stream SetterChunk ) returns( SetterArrayReply ) {}
-    rpc GetArrayValue( FieldRequest ) returns( stream GetterArrayReply ) {}
+    rpc SetArrayValue( stream GenericArray ) returns( SetterArrayReply ) {}
+    rpc GetArrayValue( FieldRequest ) returns( stream GenericArray ) {}
 
     rpc SetValue( SetterRequest ) returns( NullMessage ) {}
     rpc GetValue( FieldRequest ) returns( GetterReply ) {}
@@ -56,7 +56,7 @@ message FieldRequest
     Object params = 3;
 }
 
-message SetterArrayRequest
+message ArrayRequest
 {
     FieldRequest field       = 1;
     int32        value_count = 2;
@@ -69,37 +69,25 @@ message SetterRequest
 }
 
 
-message SetterChunk
+message GenericArray
 {
     oneof data
     {
-        SetterArrayRequest set_request  = 1;
-        IntArray           ints         = 2;
-        DoubleArray        doubles      = 3;
-        StringArray        strings      = 4;
-        FloatArray         floats       = 5;
-        Int64Array         int64s       = 6;
-        UInt64Array        uint64s      = 7;
-    }
-}
-
-message GetterArrayReply
-{
-    oneof data
-    {
-        IntArray    ints    = 1;
-        DoubleArray doubles = 2;
-        StringArray strings = 3;
-        FloatArray  floats  = 4;
-        Int64Array  int64s  = 5;
-        UInt64Array uint64s = 6;
-
+        ArrayRequest request = 1;
+        IntArray     ints    = 2;
+        DoubleArray  doubles = 3;
+        StringArray  strings = 4;
+        FloatArray   floats  = 5;
+        Int64Array   int64s  = 6;
+        UInt64Array  uint64s = 7;
+        ObjectList   objects = 8;
     }
 }
 
 message GetterReply
 {
-    string value = 1;
+    string value  = 1;
+    Object object = 2;
 }
 
 message SetterArrayReply
