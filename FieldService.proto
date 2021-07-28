@@ -49,6 +49,11 @@ message StringArray
     repeated string data = 1;
 }
 
+message BoolArray
+{
+    repeated bool data = 1 [packed = true];
+}
+
 message FieldRequest
 {
     Object self   = 1;
@@ -81,6 +86,7 @@ message GenericArray
         Int64Array   int64s  = 6;
         UInt64Array  uint64s = 7;
         ObjectList   objects = 8;
+        BoolArray    bools   = 9;
     }
 }
 
