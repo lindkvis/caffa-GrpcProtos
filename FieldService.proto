@@ -56,9 +56,9 @@ message BoolArray
 
 message FieldRequest
 {
-    Object self   = 1;
+    RpcObject self   = 1;
     string method = 2;
-    Object params = 3;
+    RpcObject params = 3;
 }
 
 message ArrayRequest
@@ -85,7 +85,7 @@ message GenericArray
         FloatArray   floats  = 5;
         Int64Array   int64s  = 6;
         UInt64Array  uint64s = 7;
-        ObjectList   objects = 8;
+        RpcObjectList   objects = 8;
         BoolArray    bools   = 9;
     }
 }
@@ -93,7 +93,6 @@ message GenericArray
 message GetterReply
 {
     string value  = 1;
-    Object object = 2;
 }
 
 message SetterArrayReply
