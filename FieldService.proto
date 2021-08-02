@@ -78,21 +78,25 @@ message GenericArray
 {
     oneof data
     {
-        ArrayRequest request = 1;
-        IntArray     ints    = 2;
-        DoubleArray  doubles = 3;
-        StringArray  strings = 4;
-        FloatArray   floats  = 5;
-        Int64Array   int64s  = 6;
-        UInt64Array  uint64s = 7;
-        RpcObjectList   objects = 8;
-        BoolArray    bools   = 9;
+        ArrayRequest  request = 1;
+        IntArray      ints    = 2;
+        DoubleArray   doubles = 3;
+        StringArray   strings = 4;
+        FloatArray    floats  = 5;
+        Int64Array    int64s  = 6;
+        UInt64Array   uint64s = 7;
+        RpcObjectList objects = 8;
+        BoolArray     bools   = 9;
     }
 }
 
 message GetterReply
 {
-    string value  = 1;
+    oneof data
+    {
+        string    value  = 1;
+        RpcObject object = 2;
+    }
 }
 
 message SetterArrayReply
