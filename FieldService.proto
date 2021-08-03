@@ -15,8 +15,11 @@ service FieldAccess
     rpc GetArrayValue( FieldRequest ) returns( stream GenericArray ) {}
 
     rpc SetValue( SetterRequest ) returns( NullMessage ) {}
-    rpc GetValue( FieldRequest ) returns( GetterReply ) {}
+    rpc GetValue( FieldRequest ) returns( GenericScalar ) {}
 
+    rpc ClearChildObjects(FieldRequest) returns (NullMessage) {}
+    rpc RemoveChildObject(FieldRequest) returns (NullMessage) {}
+    rpc InsertChildObject(SetterRequest) returns (NullMessage) {}
 }
 
 message IntArray
@@ -57,8 +60,8 @@ message BoolArray
 message FieldRequest
 {
     RpcObject self   = 1;
-    string method = 2;
-    RpcObject params = 3;
+    string  method   = 2;
+    uint64  index    = 3;
 }
 
 message ArrayRequest
@@ -90,13 +93,9 @@ message GenericArray
     }
 }
 
-message GetterReply
+message GenericScalar
 {
-    oneof data
-    {
-        string    value  = 1;
-        RpcObject object = 2;
-    }
+    string    value  = 1;
 }
 
 message SetterArrayReply
