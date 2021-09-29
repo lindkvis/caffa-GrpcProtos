@@ -9,6 +9,7 @@ service App {
   rpc Quit(NullMessage) returns (NullMessage) {}
   rpc GetAppInfo(NullMessage) returns (AppInfoReply) {}
   rpc Ping(NullMessage) returns (NullMessage) {}
+  rpc ResetToDefaultData(NullMessage) returns (NullMessage) {}
 }
 
 message NullMessage {}
