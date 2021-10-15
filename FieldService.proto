@@ -27,6 +27,11 @@ message IntArray
     repeated int32 data = 1 [packed=true];
 }
 
+message UIntArray
+{
+    repeated uint32 data = 1 [packed=true];
+}
+
 message Int64Array
 {
     repeated int64 data = 1 [packed=true];
@@ -90,6 +95,7 @@ message GenericArray
         UInt64Array   uint64s = 7;
         RpcObjectList objects = 8;
         BoolArray     bools   = 9;
+        UIntArray     uints   = 10;
     }
 }
 
