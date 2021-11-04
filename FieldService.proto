@@ -64,9 +64,9 @@ message BoolArray
 
 message FieldRequest
 {
-    RpcObject self   = 1;
-    string  method   = 2;
-    uint32  index    = 3;
+    RpcObject self_object = 1;
+    string    keyword     = 2;
+    uint32    index       = 3;
 }
 
 message ArrayRequest

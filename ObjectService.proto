@@ -35,25 +35,25 @@ message DocumentRequest
 
 message DescendantsRequest
 {
-    RpcObject self                      = 1;
-    string descendants_class_keyword = 2;
+    RpcObject self_object               = 1;
+    string    descendants_class_keyword = 2;
 }
 
 message AncestorsRequest
 {
-    RpcObject self                    = 1;
-    string ancestors_class_keyword = 2;
+    RpcObject self_object             = 1;
+    string    ancestors_class_keyword = 2;
 }
 
 message ChildRequest
 {
-    RpcObject self       = 1;
-    string field_name = 2;
+    RpcObject  self_object = 1;
+    string     field_name  = 2;
 }
 
 message MethodRequest
 {
-    RpcObject self   = 1;
-    string method = 2;
-    RpcObject params = 3;
+    RpcObject self_object = 1;
+    string    method      = 2;
+    RpcObject params      = 3;
 }
