@@ -15,7 +15,6 @@ service FieldAccess
     rpc GetArrayValue( FieldRequest ) returns( stream GenericArray ) {}
 
     rpc SetValue( SetterRequest ) returns( NullMessage ) {}
-    rpc SetUInt64Value( SetterRequestUInt64 ) returns( NullMessage ) {}
     rpc GetValue( FieldRequest ) returns( GenericScalar ) {}
 
     rpc ClearChildObjects(FieldRequest) returns (NullMessage) {}
