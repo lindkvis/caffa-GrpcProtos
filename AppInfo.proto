@@ -10,6 +10,10 @@ service App {
   rpc GetAppInfo(NullMessage) returns (AppInfoReply) {}
   rpc Ping(NullMessage) returns (NullMessage) {}
   rpc ResetToDefaultData(NullMessage) returns (NullMessage) {}
+
+  rpc CreateSession(NullMessage) returns (SessionMessage) {}
+  rpc KeepSessionAlive(SessionMessage) returns (NullMessage) {}
+  rpc DestroySession(SessionMessage) returns (NullMessage) {}
 }
 
 message NullMessage {}
@@ -30,5 +34,10 @@ message AppInfoReply
   int32 major_version = 3;
   int32 minor_version = 4;
   int32 patch_version = 5;
+}
+
+message SessionMessage
+{
+  string uuid = 1;
 }
 

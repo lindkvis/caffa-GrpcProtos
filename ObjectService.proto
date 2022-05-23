@@ -11,16 +11,26 @@ import "AppInfo.proto";
 service ObjectAccess
 {
     rpc GetDocument( DocumentRequest ) returns( RpcObject ) {}
-    rpc GetDocuments( NullMessage ) returns( RpcObjectList ) {}
+    rpc ListDocuments( SessionMessage ) returns( DocumentList ) {}
     rpc ExecuteMethod( MethodRequest ) returns( RpcObject ) {}
-    rpc ListMethods( RpcObject ) returns( RpcObjectList ) {}
-    rpc GetDescendants (DescendantsRequest) returns(RpcObjectList) {}
-    rpc GetAncestors(AncestorsRequest) returns(RpcObjectList) {}
+    rpc ListMethods( ListMethodsRequest ) returns( RpcObjectList ) {}
 }
 
 message RpcObject
 {
-    string json          = 1;
+    string json = 1;
+}
+
+message ListMethodsRequest
+{
+    RpcObject self  = 1;
+    SessionMessage session = 2;
+}
+
+
+message DocumentList
+{
+    repeated string document_id = 1;
 }
 
 message RpcObjectList
@@ -30,25 +40,8 @@ message RpcObjectList
 
 message DocumentRequest
 {
-    string document_id = 1;
-}
-
-message DescendantsRequest
-{
-    RpcObject self_object               = 1;
-    string    descendants_class_keyword = 2;
-}
-
-message AncestorsRequest
-{
-    RpcObject self_object             = 1;
-    string    ancestors_class_keyword = 2;
-}
-
-message ChildRequest
-{
-    RpcObject  self_object = 1;
-    string     field_name  = 2;
+    string  document_id = 1;
+    SessionMessage session     = 2;
 }
 
 message MethodRequest
@@ -56,4 +49,6 @@ message MethodRequest
     RpcObject self_object = 1;
     string    method      = 2;
     RpcObject params      = 3;
+    SessionMessage   session     = 4;
+
 }
