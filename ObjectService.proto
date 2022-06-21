@@ -23,7 +23,7 @@ message RpcObject
 
 message ListMethodsRequest
 {
-    RpcObject self  = 1;
+    RpcObject self_object  = 1;
     SessionMessage session = 2;
 }
 
