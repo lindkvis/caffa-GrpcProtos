@@ -13,6 +13,7 @@ service App {
 
   rpc CreateSession(NullMessage) returns (SessionMessage) {}
   rpc KeepSessionAlive(SessionMessage) returns (NullMessage) {}
+  rpc CheckSession(SessionMessage) returns (SessionMessage) {}
   rpc DestroySession(SessionMessage) returns (NullMessage) {}
 }
 
