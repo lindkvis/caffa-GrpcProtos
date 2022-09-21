@@ -68,7 +68,7 @@ message FieldRequest
     string    uuid          = 2;
     string    keyword       = 3;
     uint32    index         = 4;
-    SessionMessage session         = 5;
+    SessionMessage session  = 5;
 
 }
 
