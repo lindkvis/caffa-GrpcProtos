@@ -47,7 +47,7 @@ enum SessionType
 
 message SessionParameters
 {
-  uint32 type = 1;
+  SessionType type = 1;
 }
 
 
