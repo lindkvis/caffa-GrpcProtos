@@ -6,7 +6,7 @@ option java_multiple_files = true;
 option java_package = "org.caffa.rpc";
 
 service App {
-  rpc Quit(NullMessage) returns (NullMessage) {}
+  rpc Quit(SessionMessage) returns (NullMessage) {}
   rpc GetAppInfo(NullMessage) returns (AppInfoReply) {}
   rpc Ping(NullMessage) returns (NullMessage) {}
   rpc ResetToDefaultData(NullMessage) returns (NullMessage) {}
