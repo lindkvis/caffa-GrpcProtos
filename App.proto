@@ -9,7 +9,6 @@ service App {
   rpc Quit(SessionMessage) returns (NullMessage) {}
   rpc GetAppInfo(NullMessage) returns (AppInfoReply) {}
   rpc Ping(NullMessage) returns (NullMessage) {}
-  rpc ResetToDefaultData(NullMessage) returns (NullMessage) {}
 
   rpc CreateSession(SessionParameters) returns (SessionMessage) {}
   rpc KeepSessionAlive(SessionMessage) returns (NullMessage) {}
