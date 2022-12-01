@@ -11,55 +11,12 @@ import "ObjectService.proto";
 
 service FieldAccess
 {
-    rpc SetArrayValue( stream GenericArray ) returns( SetterArrayReply ) {}
-    rpc GetArrayValue( FieldRequest ) returns( stream GenericArray ) {}
-
     rpc SetValue( SetterRequest ) returns( NullMessage ) {}
-    rpc GetValue( FieldRequest ) returns( GenericScalar ) {}
+    rpc GetValue( FieldRequest ) returns( GenericValue ) {}
 
     rpc ClearChildObjects(FieldRequest) returns (NullMessage) {}
     rpc RemoveChildObject(FieldRequest) returns (NullMessage) {}
     rpc InsertChildObject(SetterRequest) returns (NullMessage) {}
-}
-
-message IntArray
-{
-    repeated int32 data = 1 [packed=true];
-}
-
-message UIntArray
-{
-    repeated uint32 data = 1 [packed=true];
-}
-
-message Int64Array
-{
-    repeated int64 data = 1 [packed=true];
-}
-
-message UInt64Array
-{
-    repeated uint64 data = 1 [packed=true];
-}
-
-message DoubleArray
-{
-    repeated double data = 1  [packed=true];
-}
-
-message FloatArray
-{
-    repeated float data = 1 [packed=true];
-}
-
-message StringArray
-{
-    repeated string data = 1;
-}
-
-message BoolArray
-{
-    repeated bool data = 1 [packed = true];
 }
 
 message FieldRequest
@@ -72,48 +29,13 @@ message FieldRequest
 
 }
 
-message ArrayRequest
-{
-    FieldRequest field       = 1;
-    int32        value_count = 2;
-}
-
 message SetterRequest
 {
     FieldRequest field = 1;
     string       value = 2;
 }
 
-message SetterRequestUInt64
-{
-    FieldRequest field = 1;
-    uint64       value = 2;
-}
-
-
-message GenericArray
-{
-    oneof data
-    {
-        ArrayRequest  request = 1;
-        IntArray      ints    = 2;
-        DoubleArray   doubles = 3;
-        StringArray   strings = 4;
-        FloatArray    floats  = 5;
-        Int64Array    int64s  = 6;
-        UInt64Array   uint64s = 7;
-        RpcObjectList objects = 8;
-        BoolArray     bools   = 9;
-        UIntArray     uints   = 10;
-    }
-}
-
-message GenericScalar
+message GenericValue
 {
     string    value  = 1;
-}
-
-message SetterArrayReply
-{
-    int64 value_count = 1;
 }
