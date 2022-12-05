@@ -26,6 +26,7 @@ message FieldRequest
     string    keyword       = 3;
     uint32    index         = 4;
     SessionMessage session  = 5;
+    bool copy_object_values   = 6;
 
 }
 
