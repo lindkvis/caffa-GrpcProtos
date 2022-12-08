@@ -7,7 +7,6 @@ option java_package = "org.caffa.rpc";
 option optimize_for = SPEED;
 
 import "App.proto";
-import "ObjectService.proto";
 
 service FieldAccess
 {
