@@ -10,9 +10,11 @@ service App {
   rpc GetAppInfo(NullMessage) returns (AppInfoReply) {}
   rpc Ping(NullMessage) returns (NullMessage) {}
 
+  rpc ReadyForSession(SessionParameters) returns (NullMessage) {}
   rpc CreateSession(SessionParameters) returns (SessionMessage) {}
   rpc KeepSessionAlive(SessionMessage) returns (NullMessage) {}
   rpc CheckSession(SessionMessage) returns (SessionMessage) {}
+  rpc ChangeSession(SessionMessage) returns(SessionMessage) {}
   rpc DestroySession(SessionMessage) returns (NullMessage) {}
 }
 
@@ -46,12 +48,12 @@ enum SessionType
 
 message SessionParameters
 {
-  SessionType type = 1;
+  SessionType          type = 1;
 }
-
 
 message SessionMessage
 {
-  string uuid = 1;
+  string      uuid = 1;
+  SessionType type = 2;
 }
 
