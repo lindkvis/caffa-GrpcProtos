@@ -48,7 +48,8 @@ enum SessionType
 
 message ReadyMessage
 {
-  bool ready = 1;
+  bool ready              = 1;
+  bool has_other_sessions = 2;
 }
 
 message SessionParameters
