@@ -10,7 +10,7 @@ service App {
   rpc GetAppInfo(NullMessage) returns (AppInfoReply) {}
   rpc Ping(NullMessage) returns (NullMessage) {}
 
-  rpc ReadyForSession(SessionParameters) returns (NullMessage) {}
+  rpc ReadyForSession(SessionParameters) returns (ReadyMessage) {}
   rpc CreateSession(SessionParameters) returns (SessionMessage) {}
   rpc KeepSessionAlive(SessionMessage) returns (SessionMessage) {}
   rpc CheckSession(SessionMessage) returns (SessionMessage) {}
@@ -46,9 +46,14 @@ enum SessionType
   OBSERVING = 0x02;
 }
 
+message ReadyMessage
+{
+  bool ready = 1;
+}
+
 message SessionParameters
 {
-  SessionType          type = 1;
+  SessionType type = 1;
 }
 
 message SessionMessage
