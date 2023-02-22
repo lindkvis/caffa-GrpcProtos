@@ -12,7 +12,7 @@ service App {
 
   rpc ReadyForSession(SessionParameters) returns (NullMessage) {}
   rpc CreateSession(SessionParameters) returns (SessionMessage) {}
-  rpc KeepSessionAlive(SessionMessage) returns (NullMessage) {}
+  rpc KeepSessionAlive(SessionMessage) returns (SessionMessage) {}
   rpc CheckSession(SessionMessage) returns (SessionMessage) {}
   rpc ChangeSession(SessionMessage) returns(SessionMessage) {}
   rpc DestroySession(SessionMessage) returns (NullMessage) {}
