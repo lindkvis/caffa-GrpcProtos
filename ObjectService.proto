@@ -40,15 +40,14 @@ message RpcObjectList
 
 message DocumentRequest
 {
-    string  document_id = 1;
-    SessionMessage session     = 2;
+    string  document_id    = 1;
+    SessionMessage session = 2;
 }
 
 message MethodRequest
 {
-    RpcObject self_object = 1;
-    string    method      = 2;
-    RpcObject params      = 3;
-    SessionMessage   session     = 4;
+    RpcObject self_object  = 1;
+    RpcObject method       = 2;
+    SessionMessage session = 3;
 
 }
