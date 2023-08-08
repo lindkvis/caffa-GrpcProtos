@@ -47,7 +47,8 @@ message DocumentRequest
 message MethodRequest
 {
     RpcObject self_object  = 1;
-    RpcObject method       = 2;
-    SessionMessage session = 3;
+    string    method_name  = 2;
+    RpcObject arguments    = 3;
+    SessionMessage session = 4;
 
 }
